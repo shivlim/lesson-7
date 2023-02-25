@@ -5,27 +5,27 @@ dotenv.config();
 
 
 
-//contractAddress: '0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A',
-//proposal index: '1',
-//yarn run ts-node --files ./scripts/CastingVotes_3.ts "0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A" "1"
+//contractAddress: '0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc',
+//delegated voter: '1',
+//yarn run ts-node --files ./scripts/DelegatingVotes_4.ts "0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00"
 async function main() {
     const args = process.argv;
 
     // TODO: do proper check before using it
     const ballotContractAddress = args.slice(2, 3)[0];
-    const proposalIndex = args.slice(3, 4)[0];
+    const delegatedVoterAddress = args.slice(3, 4)[0];
 
     if (!ballotContractAddress || ballotContractAddress.length <= 0) {
         throw new Error("Missing ballot contract address parameter");
     }
 
-    if (!proposalIndex || proposalIndex.length <= 0) {
-        throw new Error("Missing proposalIndex parameter");
+    if (!delegatedVoterAddress || delegatedVoterAddress.length <= 0) {
+        throw new Error("Missing delegatedVoterAddress parameter");
     }
 
 
 
-    console.log(`proposalIndex is ${proposalIndex}`)
+    console.log(`delegatedVoterAddress is ${delegatedVoterAddress}`)
   
     //const provider =  ethers.getDefaultProvider("goerli");
     const provider = new ethers.providers.AlchemyProvider(
@@ -43,7 +43,9 @@ async function main() {
     // Attach to existing contract
     const ballotContractFactory = new Ballot__factory(signer);
     const ballotContract = ballotContractFactory.attach(ballotContractAddress);
-    const txReceipt =  await ballotContract.vote(proposalIndex);
+    const txReceipt =  await ballotContract.giveRightToVote(delegatedVoterAddress,{
+        gasLimit: 100000
+      });
     console.log(`vote receipt ${txReceipt}`)
   }
 

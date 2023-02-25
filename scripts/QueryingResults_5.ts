@@ -35,7 +35,9 @@ async function main() {
     // Attach to existing contract
     const ballotContractFactory = new Ballot__factory(signer);
     const ballotContract = ballotContractFactory.attach(ballotContractAddress);
-    const winnerAddress =  await ballotContract.winnerName();
+    const winnerAddress =  await ballotContract.winnerName({
+        gasLimit: 100000
+      });
     const winnerName =  ethers.utils.parseBytes32String(winnerAddress)
     console.log(`winnername ${winnerName}`)
   }

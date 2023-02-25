@@ -6,8 +6,8 @@ dotenv.config();
 
 //Chairperson gives right to votes for diff voters/addresses which are passed as parameters
 //from: '0x11f84712f66f76d2AE20D07a1347E806098fC44D',
-//contractAddress: '0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A',
-//yarn run ts-node --files ./scripts/VotingRights_2.ts "0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A" "0xC9aA59Bf68ff97fC67cDade3F20ed8220bF6762B" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00"
+//contractAddress: '0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc',
+//yarn run ts-node --files ./scripts/VotingRights_2.ts "0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00"
 async function main() {
     const args = process.argv;
 
@@ -43,9 +43,14 @@ async function main() {
     const ballotContract = ballotContractFactory.attach(ballotContractAddress);
 
     voters.map(async v=>{
+     // Attach to existing contract
+    const ballotContractFactory = new Ballot__factory(signer);
+    const ballotContract = ballotContractFactory.attach(ballotContractAddress);
        console.log(`giving voting rights to ${v}`)
-        const txReceipt = await ballotContract.giveRightToVote(v)
-        console.log(`Gave right to vote for ${v} and tx id is ${txReceipt}`)
+        const txReceipt = await ballotContract.giveRightToVote(v,{
+          gasLimit: 100000
+        })
+        console.log(`Gave right to vote for ${v} and tx id is ${txReceipt.hash}`)
      });
   }
 

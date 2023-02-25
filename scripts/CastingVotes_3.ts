@@ -43,7 +43,9 @@ async function main() {
     // Attach to existing contract
     const ballotContractFactory = new Ballot__factory(signer);
     const ballotContract = ballotContractFactory.attach(ballotContractAddress);
-    const txReceipt =  await ballotContract.vote(proposalIndex);
+    const txReceipt =  await ballotContract.vote(proposalIndex,{
+        gasLimit: 100000
+      });
     console.log(`vote receipt ${txReceipt}`)
   }
 
