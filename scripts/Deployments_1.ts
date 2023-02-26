@@ -3,7 +3,10 @@ import { Ballot__factory } from "../typechain-types";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-
+/**
+ * Deploys contract for voting using chairperson key
+ * Ex: yarn run ts-node --files ./scripts/Deployments_1.ts "proposal1" "proposal2" "proposal3"
+ */
 
 async function main() {
     const args = process.argv;
