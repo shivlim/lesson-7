@@ -17,4 +17,5 @@ create <b>.env</b> file in the following format
 PRIVATE_KEY="XXXX"
 VOTER_PRIVATE_KEY="XXXX"
 ALCHEMY_API_KEY="XXX"
+DELEGATING_VOTER_PRIVATE_KEY="XXX"
 ```
