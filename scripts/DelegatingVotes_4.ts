@@ -4,9 +4,9 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 
-
+//Delegates voting rights from signer to delegated address passed in parameter
 //contractAddress: '0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc',
-//delegated voter: '1',
+//delegated address: '0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00',
 //yarn run ts-node --files ./scripts/DelegatingVotes_4.ts "0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00"
 async function main() {
     const args = process.argv;

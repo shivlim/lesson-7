@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 
-
+//Query the results of the contract passed in parameter using contract creator key
 //contractAddress: '0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A',
 //yarn run ts-node --files ./scripts/QueryingResults_5.ts "0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A"
 async function main() {
@@ -12,7 +12,6 @@ async function main() {
 
     // TODO: do proper check before using it
     const ballotContractAddress = args.slice(2, 3)[0];
-    const proposalIndex = args.slice(3, 4)[0];
 
     if (!ballotContractAddress || ballotContractAddress.length <= 0) {
         throw new Error("Missing ballot contract address parameter");
