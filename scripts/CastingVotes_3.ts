@@ -47,7 +47,7 @@ async function main() {
     const txReceipt =  await ballotContract.vote(proposalIndex,{
         gasLimit: 100000
       });
-    console.log(`vote receipt ${txReceipt}`)
+    console.log(`vote receipt ${txReceipt.hash}`)
   }
 
 main().catch((error) => {
