@@ -34,7 +34,7 @@ async function main() {
         process.env.ALCHEMY_API_KEY
       );
     
-    const privateKey = process.env.PRIVATE_KEY;
+    const privateKey = process.env.DELEGATED_VOTER_PRIVATE_KEY;
     if (!privateKey || privateKey.length <= 0)
       throw new Error("Missing environment: Mnemonic seed");
     const wallet = new ethers.Wallet(privateKey);
