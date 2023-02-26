@@ -4,10 +4,11 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 
-//Delegates voting rights from signer to delegated address passed in parameter
-//contractAddress: '0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc',
-//delegated address: '0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00',
-//yarn run ts-node --files ./scripts/DelegatingVotes_4.ts "0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00"
+/***
+ * Delegates votes using self wallet
+ * Ex: yarn run ts-node --files ./scripts/DelegatingVotes_4.ts "0xFE4235a6e0877B887970A08409064ff4702CEc34" "0xbf0928FD32C01daF23316bc61FeE58365201B340"
+ * 
+ */
 async function main() {
     const args = process.argv;
 
@@ -43,7 +44,7 @@ async function main() {
     // Attach to existing contract
     const ballotContractFactory = new Ballot__factory(signer);
     const ballotContract = ballotContractFactory.attach(ballotContractAddress);
-    const txReceipt =  await ballotContract.giveRightToVote(delegatedVoterAddress,{
+    const txReceipt =  await ballotContract.delegate(delegatedVoterAddress,{
         gasLimit: 100000
       });
     console.log(`vote receipt ${txReceipt.hash}`)

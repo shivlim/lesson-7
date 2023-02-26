@@ -4,11 +4,12 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 
-//Cast vote on a proposal passed as a parameter  using contract address sent in parameter 
-//Signer key is the person doing the voting
-//contractAddress: '0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A',
-//proposal index: '1',
-//yarn run ts-node --files ./scripts/CastingVotes_3.ts "0xB2CE688C4491933eB1D9238FD3bDaEf5E1d12F1A" "1"
+/**
+ * Casts votes on smartcontract using voter private key
+ * Ex: yarn run ts-node --files ./scripts/CastingVotes_3.ts "0xFE4235a6e0877B887970A08409064ff4702CEc34" "1"
+ * where 0xFE4235a6e0877B887970A08409064ff4702CEc34 is the smartcontract address
+ * and 1 is the proposal index
+ */
 async function main() {
     const args = process.argv;
 

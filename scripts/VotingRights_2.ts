@@ -4,10 +4,12 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 
-//Chairperson gives right to votes for diff voters/addresses which are passed as parameters
-//from: '0x11f84712f66f76d2AE20D07a1347E806098fC44D',
-//contractAddress: '0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc',
-//yarn run ts-node --files ./scripts/VotingRights_2.ts "0xdf0530a01290Db7d7f921a0A910451a5c32b1EFc" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00"
+/***
+ * Gives voting rights to addresses using chairperson key
+ * EX:yarn run ts-node --files ./scripts/VotingRights_2.ts "0xFE4235a6e0877B887970A08409064ff4702CEc34" "0xC9aA59Bf68ff97fC67cDade3F20ed8220bF6762B" "0xc045Bbcab0CB395B5C0a76dEfE1B23111197fc00" "0x78bC6B775Eb95f0D049bEA9593C03dDFB3306e74"
+ * where 0xFE4235a6e0877B887970A08409064ff4702CEc34 is the contract addresses and 
+ * all other parameters are addresses of voters
+ */
 async function main() {
     const args = process.argv;
 
